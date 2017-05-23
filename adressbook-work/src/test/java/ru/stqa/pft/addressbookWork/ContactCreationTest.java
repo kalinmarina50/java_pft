@@ -18,16 +18,16 @@ public class ContactCreationTest {
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
         wd.get("http://localhost/addressbook/edit.php");
-        login();
+        login("admin", "secret");
     }
 
-    private void login() {
+    private void login(String name, String password) {
         wd.findElement(By.name("user")).click();
         wd.findElement(By.name("user")).clear();
-        wd.findElement(By.name("user")).sendKeys("admin");
+        wd.findElement(By.name("user")).sendKeys(name);
         wd.findElement(By.name("pass")).click();
         wd.findElement(By.name("pass")).clear();
-        wd.findElement(By.name("pass")).sendKeys("secret");
+        wd.findElement(By.name("pass")).sendKeys(password);
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
     }
 
@@ -35,44 +35,48 @@ public class ContactCreationTest {
     public void testContactCreation() {
 
         goToAddNewPage();
-        fillContactForm("Ma", "La", "Ms", "Pinapple", "123 Castro Valley Blvd, Bassen,", "512-222-6590", "512-222-6590", "mala@yandex.net");
+        fillContactForm(new ContactFormData("Ma", "La", "Ms", "Pinapple", "123 Castro Valley Blvd, Bassen,", "512-222-6590", "512-222-6590", "mala@yandex.net", "3", "2", "1990"));
+        submitContactCreation();
+    }
+
+    private void submitContactCreation() {
         wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
     }
 
-    private void fillContactForm(String firstname, String lastname, String title, String company, String address, String homephone, String mobilephone, String email) {
+    private void fillContactForm(ContactFormData contactFormData) {
         wd.findElement(By.name("firstname")).click();
         wd.findElement(By.name("firstname")).clear();
-        wd.findElement(By.name("firstname")).sendKeys(firstname);
+        wd.findElement(By.name("firstname")).sendKeys(contactFormData.getFirstname());
         wd.findElement(By.name("lastname")).click();
         wd.findElement(By.name("lastname")).clear();
-        wd.findElement(By.name("lastname")).sendKeys(lastname);
+        wd.findElement(By.name("lastname")).sendKeys(contactFormData.getLastname());
         wd.findElement(By.name("title")).click();
         wd.findElement(By.name("title")).clear();
-        wd.findElement(By.name("title")).sendKeys(title);
+        wd.findElement(By.name("title")).sendKeys(contactFormData.getTitle());
         wd.findElement(By.name("company")).click();
         wd.findElement(By.name("company")).clear();
-        wd.findElement(By.name("company")).sendKeys(company);
+        wd.findElement(By.name("company")).sendKeys(contactFormData.getCompany());
         wd.findElement(By.name("address")).click();
         wd.findElement(By.name("address")).clear();
-        wd.findElement(By.name("address")).sendKeys(address);
+        wd.findElement(By.name("address")).sendKeys(contactFormData.getAddress());
         wd.findElement(By.name("home")).click();
         wd.findElement(By.name("home")).clear();
-        wd.findElement(By.name("home")).sendKeys(homephone);
+        wd.findElement(By.name("home")).sendKeys(contactFormData.getHomephone());
         wd.findElement(By.name("mobile")).click();
         wd.findElement(By.name("mobile")).clear();
-        wd.findElement(By.name("mobile")).sendKeys(mobilephone);
+        wd.findElement(By.name("mobile")).sendKeys(contactFormData.getMobilephone());
         wd.findElement(By.name("email")).click();
         wd.findElement(By.name("email")).clear();
-        wd.findElement(By.name("email")).sendKeys(email);
-        if (!wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[3]")).isSelected()) {
-            wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[3]")).click();
+        wd.findElement(By.name("email")).sendKeys(contactFormData.getEmail());
+        if (!wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[" + contactFormData.getBirthday() + "]")).isSelected()) {
+            wd.findElement(By.xpath("//div[@id='content']/form/select[1]//option[" + contactFormData.getBirthday() + "]")).click();
         }
-        if (!wd.findElement(By.xpath("//div[@id='content']/form/select[2]//option[2]")).isSelected()) {
-            wd.findElement(By.xpath("//div[@id='content']/form/select[2]//option[2]")).click();
+        if (!wd.findElement(By.xpath("//div[@id='content']/form/select[2]//option[" + contactFormData.getBirthmonth() + "]")).isSelected()) {
+            wd.findElement(By.xpath("//div[@id='content']/form/select[2]//option[" + contactFormData.getBirthmonth() + "]")).click();
         }
         wd.findElement(By.name("byear")).click();
         wd.findElement(By.name("byear")).clear();
-        wd.findElement(By.name("byear")).sendKeys("1990");
+        wd.findElement(By.name("byear")).sendKeys(contactFormData.getBirthyear());
     }
 
     private void goToAddNewPage() {
