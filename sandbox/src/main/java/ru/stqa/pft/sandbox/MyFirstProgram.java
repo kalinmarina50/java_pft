@@ -6,13 +6,14 @@ public class MyFirstProgram {
 	    hello("world");
 	    hello("Denis");
 	    hello("Malish");
-	    double l = 5;
-        System.out.println("Area of the square with the side of " + l + " = " + area(l));
 
 
-        double a = 2;
-        double b = 5;
-        System.out.println("Area of a rectangle with the side of " + a + " and " + b + " = " + area(a, b));
+	    Square s = new Square(5);
+        System.out.println("Area of a square with the side of " + s.l + " equals " + s.area());
+
+
+        Rectangle r = new Rectangle(3,4);
+        System.out.println("Area of a rectangle with the sides of " + r.a + " and " + r.b + " equals " + r.area());
 
 	}
 
@@ -20,12 +21,4 @@ public class MyFirstProgram {
         System.out.println("Hello, " + somestring + "!");
     }
 
-    public static double area(double length) {
-        return length * length;
-
-    }
-
-    public static double area(double a, double b) {
-	    return a * b;
-    }
 }

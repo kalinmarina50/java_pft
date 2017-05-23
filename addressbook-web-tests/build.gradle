@@ -1,6 +1,4 @@
 apply plugin: 'java'
-apply plugin: 'application'
-mainClassName = "ru.stqa.pft.sandbox.MyFirstProgram"
 
 repositories {
 
@@ -11,4 +9,6 @@ repositories {
 dependencies {
 
     compile 'org.testng:testng:6.11'
+    compile 'org.seleniumhq.selenium:selenium-java:3.4.0'
+
 }
