@@ -8,6 +8,8 @@
       <module name="adressbook-work_test" target="1.8" />
       <module name="sandbox_main" target="1.8" />
       <module name="sandbox_test" target="1.8" />
+      <module name="testmodule_main" target="1.8" />
+      <module name="testmodule_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
