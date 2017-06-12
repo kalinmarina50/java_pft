@@ -15,7 +15,7 @@ public class ApplicationManager {
     private SessionHelper sessionHelper;
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
-    
+
 
     public void init() {
         wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));

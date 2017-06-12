@@ -1,19 +1,20 @@
 package ru.stqa.pft.testmodule.tests;
 
-
 import org.testng.annotations.Test;
 import ru.stqa.pft.testmodule.model.GroupFormDate;
 
-
-public class GroupCreationTest extends TestBase {
+/**
+ * Created by marinacalin on 6/11/17.
+ */
+public class GroupModificationTest extends TestBase {
 
     @Test
-    public void groupCreationTest() {
+    public void groupModificationTest() {
         app.getNavigationHelper().gotoGroupPage();
-        app.getGroupHelper().initGroupCreation();
+        app.getGroupHelper().selectGroup();
+        app.getGroupHelper().initGroupModification();
         app.getGroupHelper().fillOutGroupForm(new GroupFormDate("groupNumber3", "New group creation completed", "new group creation successful"));
-        app.getGroupHelper().submitGroupForm();
+        app.getGroupHelper().submitGroupModification();
         app.getGroupHelper().returnToGroupPage();
     }
-
 }
