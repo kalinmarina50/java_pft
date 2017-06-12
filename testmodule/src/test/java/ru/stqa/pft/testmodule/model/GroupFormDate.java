@@ -1,4 +1,4 @@
-package ru.stqa.pft.testmodule;
+package ru.stqa.pft.testmodule.model;
 
 public class GroupFormDate {
     private final String name;
