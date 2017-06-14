@@ -3,9 +3,7 @@ package ru.stqa.pft.testmodule.tests;
 import org.testng.annotations.Test;
 import ru.stqa.pft.testmodule.model.GroupFormDate;
 
-/**
- * Created by marinacalin on 6/11/17.
- */
+
 public class GroupModificationTest extends TestBase {
 
     @Test
