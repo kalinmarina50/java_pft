@@ -35,7 +35,7 @@ public class ContactCreationTest {
     public void testContactCreation() {
 
         goToAddNewPage();
-        fillContactForm(new ContactFormData("Ma", "La", "Ms", "Pinapple", "123 Castro Valley Blvd, Bassen,", "512-222-6590", "512-222-6590", "mala@yandex.net", "3", "2", "1990"));
+        fillContactForm(new ContactFormData("Ma", "La", "Ms", "Pinapple", "123 Castro Valley Blvd, Bassen,", "512-222-6590", "512-222-6590", "mala@yandex.net", "3", "2", "1990", "test1"));
         submitContactCreation();
     }
 

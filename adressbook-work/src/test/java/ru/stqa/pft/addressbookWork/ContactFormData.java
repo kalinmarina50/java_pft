@@ -12,8 +12,9 @@ public class ContactFormData {
     private final String birthday;
     private final String birthmonth;
     private final String birthyear;
+    private String group;
 
-    public ContactFormData(String firstname, String lastname, String title, String company, String address, String homephone, String mobilephone, String email, String birthday, String birthmonth, String birthyear) {
+    public ContactFormData(String firstname, String lastname, String title, String company, String address, String homephone, String mobilephone, String email, String birthday, String birthmonth, String birthyear, String group) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.title = title;
@@ -25,6 +26,7 @@ public class ContactFormData {
         this.birthday = birthday;
         this.birthmonth = birthmonth;
         this.birthyear = birthyear;
+        this.group = group;
     }
 
     public String getFirstname() {
@@ -69,5 +71,9 @@ public class ContactFormData {
 
     public String getBirthyear() {
         return birthyear;
+    }
+
+    public String getGroup() {
+        return group;
     }
 }
