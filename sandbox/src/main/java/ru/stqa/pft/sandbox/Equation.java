@@ -16,7 +16,7 @@ public class Equation {
         this.b = b;
         this.c = c;
 
-        double d = b*b - 4*a*c;
+        double d = b * b - 4 * a * c;
 
         if (a == 0) {
             System.out.println("This is a linear equation");

@@ -2,11 +2,12 @@ package ru.stqa.pft.testmodule.appManager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import ru.stqa.pft.testmodule.model.GroupFormDate;
 
 
 public class GroupHelper extends HelperBase {
+
+    private By name;
 
     public GroupHelper(WebDriver wd) {
         super(wd);
@@ -34,6 +35,9 @@ public class GroupHelper extends HelperBase {
         click(By.name("delete"));
     }
 
+    public void selectElement() { click(By.name("selected[]"));}
+
+
     public void selectGroup() {
         if (!wd.findElement(By.name("selected[]")).isSelected()) {
             click(By.name("selected[]"));
@@ -46,5 +50,26 @@ public class GroupHelper extends HelperBase {
 
     public void submitGroupModification() {
         click(By.name("update"));
+    }
+
+    public void createGroup(GroupFormDate group) {
+        initGroupCreation();
+        fillOutGroupForm(group);
+        submitGroupForm();
+        returnToGroupPage();
+    }
+
+    public boolean isThereGroup() {
+        return isElementPresent(By.name("selected[]"));
+    }
+
+    private boolean isElementPresent(By name) {
+        this.name = name;
+        return true;
+    }
+
+
+    public int getGroupCount() {
+       return wd.findElements(By.name("selected[]")).size();
     }
 }
